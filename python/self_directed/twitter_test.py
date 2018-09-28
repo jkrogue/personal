@@ -1,10 +1,16 @@
 import twitter
 import time
 
-api = twitter.Api(consumer_key = "0GH7tu4IVadciAf0bmpY1oCE7",
-	consumer_secret = "k6pI2XkczMXDYIiVGhojVMPnR3ivNsqEjBAgWD1SHjyLIO0Tw3",
-	access_token_key = "788065625612521473-tobhL5J7VkpYUnVUCoYZr8pQA8M0HDu",
-	access_token_secret = "EAUtppeePeOUILJ6mR18tx0MFaZsd9PmWriBgr1pth3kK")
+with open('twitter_info.txt') as f:
+	twitter_info = f.read().split('\n')
+
+print(twitter_info)
+for each in twitter_info:
+	print(each)
+api = twitter.Api(consumer_key = twitter_info[0],
+	consumer_secret = twitter_info[1],
+	access_token_key = twitter_info[2],
+	access_token_secret = twitter_info[3])
 
 def to_string_time(struct_time):
 	return "{}-{}-{}".format(struct_time.tm_year,str(struct_time.tm_mon).zfill(2),str(struct_time.tm_mday).zfill(2))
